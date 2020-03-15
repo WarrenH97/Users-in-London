@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+</head>
+<body>
+    <h1><%= title %></h1>
+    <p>Only uses the <i>"/users"</i> and <i>"/city/{city}/users"</i> bpdts API routes.</p>
+    <p>From testing, <i>"/user/{id}"</i> adds a city property to the user object, and filtering on this property returns the same users that <i>"/city/{city}/users"</i> returns.</p>
+    <table>
+        <tr>
+            <th>Path</th>
+            <th>Response</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td><a href="/users">/users</a></td>
+            <td>200</td>
+            <td>Returns a list of users listed as being in London or whose coordinates are within 50 miles of London</td>
+        </tr>
+    </table>
+    <style>
+        th, td {
+            padding-right: 10px;
+            text-align: left;
+        }
+    </style>
+</body>
+</html>

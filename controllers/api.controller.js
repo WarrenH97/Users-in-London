@@ -3,6 +3,16 @@ const helper = require('../utils/helper');
 const { MaxDistance, LondonData } = require('../config');
 
 /**
+ * Renders index page
+ * @param {Object} req the request object
+ * @param {Object} res the response object
+ * @param {Function} next call the next middleware function
+ */
+exports.index = (req, res, next) => {
+    return res.render('index', { title: 'API Home' });
+};
+
+/**
  * Gets a list of users known to be in London based on Lat Long or
  * if they're listed as living there
  * @param {Object} req the request object

@@ -1,5 +1,5 @@
 {
-  "name": "apitest",
+  "name": "usersapi",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -10,11 +10,13 @@
   "author": "Warren Hanson",
   "dependencies": {
     "debug": "~2.6.9",
+    "ejs": "^3.0.1",
     "express": "~4.16.1",
     "geolib": "^3.2.1",
     "http-errors": "~1.6.3",
     "morgan": "~1.9.1",
-    "node-fetch": "^2.6.0"
+    "node-fetch": "^2.6.0",
+    "path": "^0.12.7"
   },
   "devDependencies": {
     "@types/jest": "^25.1.4",

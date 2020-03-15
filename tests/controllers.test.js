@@ -11,17 +11,27 @@ const mockResponse = () => {
 
     mockRes.status = jest.fn().mockReturnValue(mockRes);
     mockRes.json = jest.fn().mockReturnValue(mockRes);
+    mockRes.render = jest.fn().mockReturnValue(mockRes);
     
     return mockRes;
 };
 
-beforeAll(() => {
-    req = jest.fn();
-    res = mockResponse();
-    next = jest.fn();
-});
-
 describe("API controller", () => {
+    beforeAll(() => {
+        req = jest.fn();
+        res = mockResponse();
+        next = jest.fn();
+    });
+
+    it("should return the index page", () => {
+        apiController.index(req, res, next);
+
+        expect(res.render).toHaveBeenCalledTimes(1);
+        expect(res.render).toHaveBeenCalledWith('index', { title: 'API Home' });
+        expect(req).toHaveBeenCalledTimes(0);
+        expect(next).toHaveBeenCalledTimes(0);
+    });
+
     it("should return all users in London", async () => {
         await apiController.getUsersInLondon(req, res, next);
 
@@ -39,20 +49,3 @@ describe("API controller", () => {
         expect(next).toHaveBeenCalledTimes(0);
     });
 });
-
-// describe("API controller error handling", () => {
-//     const users = require('../utils/users');
-
-//     beforeAll(() => {
-//         users.getAllUsers.mockImplementation(async () => {
-//             return Promise.resolve(42);
-//         });
-//     });
-
-//     it("should return status 500 with error message", async () => {
-//         await apiController.getUsersInLondon(res);
-
-//         expect(res.status).toHaveBeenCalled();
-//         expect(res.status).toHaveBeenCalledWith(500);
-//     });
-// });
