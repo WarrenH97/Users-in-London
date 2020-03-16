@@ -23,7 +23,7 @@ exports.getUsersInRange = (users, lat, long, maxDistance) => {
  * @param {Number} lat2 lat of end point
  * @param {Number} lng2 long of end point
  */
-const getDistance = (lat1, lng1, lat2, lng2) => {
+exports.getDistance = (lat1, lng1, lat2, lng2) => {
     // Check to ensure each coord has a value
     if (lat1 == null || lng1 == null || 
         lat2 == null || lng2 == null) {
@@ -40,6 +40,3 @@ const getDistance = (lat1, lng1, lat2, lng2) => {
 
     return distMiles;
 };
-
-// Export for testing
-exports.getDistance = getDistance;
